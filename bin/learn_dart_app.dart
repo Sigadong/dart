@@ -1,5 +1,10 @@
 
 void main() {
+  String singleQuote = 'Ini adalah String';
+  String doubleQuote = "Ini juga String";
+  print(singleQuote);
+  print(doubleQuote);
+
   // Strings: use escape string(\)
   print('"I think it\'s great!" I answered confidently');
   print("Windows path: C:\\Program Files\\Dart");
