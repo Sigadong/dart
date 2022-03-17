@@ -1,18 +1,18 @@
 
 void main() {
-  // String -> int
-  var eleven = int.parse('11');
-  print(eleven);
+  // Strings: use escape string(\)
+  print('"I think it\'s great!" I answered confidently');
+  print("Windows path: C:\\Program Files\\Dart");
 
-  // String -> double
-  var elevenPointTwo = double.parse('11.2');
-  print(elevenPointTwo);
+  // String Interpolation
+  var name = 'Messi';
+  print('Hello $name, nice to meet you.');
+  print('1 + 1 = ${1 + 1}');
 
-  // int -> String
-  var elevenAsString = 11.toString();
-  print(elevenAsString);
+  // using the letter 'r' before the String will tell Dart to treat the String as raw
+  print(r'Dia baru saja membeli komputer seharga $1,000.00');
+  print('Dia baru saja membeli komputer seharga \$1,000.00');
 
-  // double -> String
-  var piAsString = 3.14159.toStringAsFixed(2);
-  print(piAsString);
+  // In Unicode Darts these are known as runes
+  print('Hi \u2665');
 }
