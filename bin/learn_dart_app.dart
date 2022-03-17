@@ -1,6 +1,6 @@
 void main() {
   /*
-   Tanda tanya (?) di atas menunjukkan bahwa variabel favoriteFood boleh memiliki nilai null (nullable).
+   Tanda tanya (?) menunjukkan bahwa variabel favoriteFood boleh memiliki nilai null (nullable).
    Sementara variabel age harus memiliki nilai angka dan tidak boleh null (non-nullable).
   */
   String name = 'John Doe';
