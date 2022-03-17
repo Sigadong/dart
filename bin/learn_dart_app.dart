@@ -1,9 +1,17 @@
-import 'dart:io';
-
 void main() {
-  // Aplikasi Konversi Suhu
-  stdout.write('Masukkan Suhu dalam Fahrenheit: ');
-  var fahrenheit = num.parse(stdin.readLineSync()!);
-  var celsius = (fahrenheit - 32) * 5 / 9;
-  print('$fahrenheit derajat Fahrenheit = $celsius derajat celcius');
+  // Function parameters
+  var firstNumber = 7;
+  var secondNumber = 10;
+  print('Rata-rata dari $firstNumber & $secondNumber adalah ${average(firstNumber, secondNumber)}');
+  greeting();
 }
+
+/*
+double average(num num1, num num2) {
+  return (num1 + num2) / 2;
+}
+*/
+
+// Arrow syntax
+double average(num num1, num num2) => (num1 + num2) / 2;
+void greeting() => print('Hello');
