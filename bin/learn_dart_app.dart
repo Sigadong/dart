@@ -1,24 +1,34 @@
-void main() {
-  /*
-   Tanda tanya (?) menunjukkan bahwa variabel favoriteFood boleh memiliki nilai null (nullable).
-   Sementara variabel age harus memiliki nilai angka dan tidak boleh null (non-nullable).
-  */
-  String name = 'John Doe';
-  int age = 23;
-  String? favoriteFood = null;
+import 'dart:io';
 
-  buyAMeal(favoriteFood);       // Compile error
+/// If and Else
+void main() {
+  stdout.write('Inputkan nilai Anda (1-100) : ');
+  var score = num.parse(stdin.readLineSync()!);
+
+  print('Nilai Anda: ${calculateScore(score)}');
 }
 
-void buyAMeal(String? favoriteFood) {
-  if (favoriteFood == null) {
-    print('Bought Nasi Goreng');
+String calculateScore(num score) {
+  if (score > 90) {
+    return 'A';
+  } else if (score > 80) {
+    return 'B';
+  } else if (score > 70) {
+    return 'C';
+  } else if (score > 60) {
+    return 'D';
   } else {
-    print('Bought $favoriteFood');
+    return 'E';
   }
 }
 
-/*
-  Cara kedua yang bisa kita lakukan adalah menggunakan bang operator (!).
-  Dengan operator ini kita memberitahu compiler dan memberikan jaminan bahwa variabel tidak akan bernilai null.
-*/
+/**
+    itur menarik lain dari Dart adalah conditional expressions. Dengan ini kita bisa menuliskan if-else statement hanya dalam satu baris:
+      // condition ? true expression : false expression
+      var shopStatus = now > openHours ? "Hello, we're open" : "Sorry, we've closed";
+
+    Selain itu Dart juga mendukung conditional expressions seperti berikut:
+      expression1 ?? expression2
+      var buyer = name ?? 'user';
+    Pada kode di atas jika variabel name tidak bernilai null, maka buyer akan menyimpan nilai dari name. Namun jika bernilai null, buyer akan berisi ‘user’.
+**/
