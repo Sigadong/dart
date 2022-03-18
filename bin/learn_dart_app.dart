@@ -1,23 +1,20 @@
-import 'dart:io';
 
 /// Break and Continue
 void main() {
-  // 20 bilangan prima pertama
-  var primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71];
-  stdout.write('Masukkan bilangan prima : ');
-  var searchNumber = int.parse(stdin.readLineSync()!);
+  breakContinue();
+}
 
-  for (int i = 0; i < primeNumbers.length; i++) {
-    if (searchNumber == primeNumbers[i]) {
-      print('$searchNumber adalah bilangan prima ke-${i+1}');
-      break;
+void breakContinue() {
+  for (int i = 1; i <= 10; i++) {
+    if (i % 3 == 0) {
+      continue;
     }
-    print('$searchNumber != ${primeNumbers[i]}');
+    print(i);
   }
 }
 
 
 /**
-    etika bilangan prima tersebut sudah ditemukan tentunya komputer tidak perlu melanjutkan proses perulangan lagi.
-    Nah, di sinilah kita bisa menggunakan break untuk menghentikan dan keluar dari proses iterasi.
+    Keyword lain yang berguna pada proses perulangan adalah continue. Dengan continue kita bisa melewatkan proses iterasi dan lanjut ke proses iterasi berikutnya.
+    Misalnya Anda ingin menampilkan angka 1 sampai 10 kecuali angka kelipatan 3
 **/
