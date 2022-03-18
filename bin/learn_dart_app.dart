@@ -1,15 +1,21 @@
 
 /// While and Do-while
 void main() {
-  var i = 1;
+  String username;
+  bool notValid = false;
 
-  while (i <= 100) {
-    print(i);
-    i++;
-  }
+  do {
+    stdout.write('Masukkan nama Anda (min. 6 karakter): ');
+    username = stdin.readLineSync();
+
+    if (username.length < 6 ) {
+      notValid = true;
+      print('Username Anda tidak valid');
+    }
+  } while (notValid);
 }
 
 /**
-    Bisa dilihat pada kode di atas bahwa perulangan dengan while tidak memiliki ketergantungan dengan variabel index seperti pada for loop.
-    Karena itu, meskipun while dapat melakukan perulangan yang sama dengan for, WHILE lebih cocok digunakan pada kasus di mana 'kita tidak tahu pasti berapa banyak perulangan yang diperlukan'.
+    Kondisi pada while akan dievaluasi sebelum blok kode di dalamnya dijalankan, sedangkan do-while akan mengevaluasi boolean expression setelah blok kodenya dijalankan.
+    Ini artinya kode di dalam do-while akan dijalankan setidaknya satu kali.
 **/
