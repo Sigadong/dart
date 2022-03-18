@@ -1,19 +1,23 @@
+import 'dart:io';
 
-/// While and Do-while
+/// Break and Continue
 void main() {
-  var i = 1;
+  // 20 bilangan prima pertama
+  var primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71];
+  stdout.write('Masukkan bilangan prima : ');
+  var searchNumber = int.parse(stdin.readLineSync()!);
 
-  while (i < 5) {
-    print(i);
-
-    // i++; //Jika tidak ditulis, menjadi penyebab infinite loops
+  for (int i = 0; i < primeNumbers.length; i++) {
+    if (searchNumber == primeNumbers[i]) {
+      print('$searchNumber adalah bilangan prima ke-${i+1}');
+      break;
+    }
+    print('$searchNumber != ${primeNumbers[i]}');
   }
 }
 
-/**
-    Ketika menerapkan perulangan pada program kita, ada satu kondisi yang perlu kita hindari yaitu infinite loop.
-    Infinite loop atau endless loop adalah kondisi di mana program kita stucked di dalam perulangan. Ia akan berjalan terus hingga menyebabkan crash pada aplikasi dan komputer kecuali ada intervensi secara eksternal, seperti mematikan aplikasi.
 
-    Dapatkah Anda mencari apa yang salah dari dari kode di atas sehingga terjadi infinite loop??
-    karena variabel i selalu bernilai 1. Alhasil kondisi i < 5 akan selalu bernilai true dan akibatnya aplikasi akan terus mencetak 1 ke konsol sehingga mengalami crash.
+/**
+    etika bilangan prima tersebut sudah ditemukan tentunya komputer tidak perlu melanjutkan proses perulangan lagi.
+    Nah, di sinilah kita bisa menggunakan break untuk menghentikan dan keluar dari proses iterasi.
 **/
