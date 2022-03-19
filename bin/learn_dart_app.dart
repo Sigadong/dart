@@ -24,4 +24,10 @@ void main() {
   capital['New Delhi'] = 'India';
   print(capital); // Output: {Jakarta: Indonesia, London: England, Tokyo: Japan, New Delhi: India}
 
+  // Untuk menghapus seluruh key-value yang ada di dalam Map bisa menggunakan fungsi clear().
+  var mapClear = capital.clear();
+
+  // Saat mengakses key yang tidak ada pada map, nilai variabel akan bernilai null.
+  print(capital['New Delhi']);
+
 }
