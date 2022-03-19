@@ -1,26 +1,37 @@
 void main() {
-  // Optional parameters
+  /* LIST
+  List sesuai namanya dapat menampung banyak data ke dalam satu objek.
 
-  // Dengan cara ini Anda bisa memasukkan parameter tanpa mempedulikan urutan parameter dengan menyebutkan nama parameternya.
-  greetNewUser(name: 'Widy', age: 20, isVerified: true);
-  greetNewUser(name: 'Widy', age: 20);
+  Sesuai contoh di atas, kita mendefinisikan tipe data yang bisa dimasukkan ke dalam List di dalam tanda kurung sudut (<>).
+  Sama seperti variabel, jika kita tidak mendefinisikan nilai secara eksplisit ke dalam List, maka List akan menyimpan tipe dynamic atau bisa menyimpan semua tipe data.
+  * */
+  List<int> numbers = [1, 2, 3, 4, 5];
+
+  var numberList = [1, 2, 3, 4, 5];
+  var stringList = ['Hello', 'Dicoding', 'Dart'];
+
+  List dynamicList = [1, 'Dicoding', true]; // List<dynamic>
+  print(dynamicList[1]);
+
+  for(int i = 0; i < stringList.length; i++) {
+    print(stringList[i]);
+  }
+
+  stringList.forEach((s) => print(s));
+
+  // Fungsi add ini akan menambahkan data di akhir list
+  stringList.add('Flutter'); // [Hello, Dicoding, Dart, Flutter]
+
+  // Fungsi add ini akan menambahkan data tidak di akhir list((di awal list)
+  stringList.insert(0, 'Programming'); // stringList = [Programming, Hello, Dicoding, Dart, Flutter]
+
+  // Untuk mengubah nilai di dalam list,kita bisa langsung menginisialisasikan nilai baru sesuai indeks yang diinginkan.
+  stringList[1] = 'Application';
+
+
+  // Sedangkan untuk menghapus data terdapat beberapa fungsi remove yg bisa digunakan:
+  stringList.remove('Programming'); // Menghapus list dengan nilai Programming
+  stringList.removeAt(1);           // Menghapus list pada index ke-1
+  stringList.removeLast();          // Menghapus data list terakhir
+  stringList.removeRange(0, 2);     // Menghapus list mulai index ke-0 sampai ke-1 (indeks 2 masih dipertahankan)
 }
-
-// Dart mendukung optional parameter, di mana kita tidak wajib mengisi parameter yang diminta oleh fungsi.
-// Untuk bisa membuat parameter menjadi opsional, kita perlu memasukkannya ke dalam kurung siku.
-// void greetNewUser([String? name, int? age, bool? isVerified]) => print('Hello, My name is $name, my old $age th');
-/*
-  Setiap parameter yang tidak dimasukkan akan memiliki nilai null. Namun sejak versi 2.12, Dart memiliki fitur null safety di mana suatu variabel secara default tidak bisa memiliki nilai null.
-*/
-
-// Solusinya, kita bisa menambahkan tanda tanya (?) setelah tipe data supaya bisa menyimpan nilai null atau memberikan nilai parameter default
-// void greetNewUser([String? name, int? age, bool? isVerified]) => print('Hello, My name is $name, my old $age th');
-
-/*
-Dengan cara ini, urutan parameter masih perlu diperhatikan sehingga jika kita hanya ingin mengisi parameter terakhir,
-kita perlu mengisi parameter sebelumnya dengan null.
-greetNewUser(null, null, true);
-*/
-
-// Untuk mengatasi masalah di atas kita bisa memanfaatkan named optional parameters. Pada opsi ini kita menggunakan kurung kurawal pada parameter.
-void greetNewUser({required String name, required int age, bool isVerified = false}) => print('Hello, My name is $name, my old $age th');
