@@ -1,10 +1,7 @@
 void main() {
   /* SET
-   - Spread Operator
   Set merupakan sebuah collection yang hanya dapat menyimpan nilai yang unik. Ini akan berguna ketika Anda tidak ingin ada data yang sama alias duplikasi dalam sebuah collection.
   */
-
-
   Set<int> anotherSet = new Set.from([1, 4, 6, 4, 1]);
   print(anotherSet);
 
@@ -36,4 +33,5 @@ void main() {
   var intersection = setA.intersection(setB);
   print(union); // union: {1, 2, 4, 5, 7}
   print(intersection); // intersection: {1, 5}
+
 }
