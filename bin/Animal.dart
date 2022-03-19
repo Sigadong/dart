@@ -1,35 +1,42 @@
 /* Properties & Methods
-Pada class, variabel dan fungsi ini dikenal dengan property dan method.
-Property merepresentasikan atribut pada sebuah objek sementara method menggambarkan perilaku dari objek.
-Sama seperti variabel, kita mendeklarasikan property di dalam kelas dengan menentukan tipe datanya atau menginisialisasikan nilainya secara eksplisit.
+Property yang private artinya hanya bisa diakses pada berkas atau library yang sama.
+Kita akan membutuhkan private property ini di saat kita tidak ingin objek diubah dari luar.
+Karena Dart tidak memiliki modifier private, sebagai gantinya kita perlu menambahkan underscore (_) sebelum nama property.
 
-OOP memiliki konsep enkapsulasi di mana kita bisa menyembunyikan informasi di dalam objek sehingga status atau data di dalam objek tidak bisa diubah atau bahkan dilihat.
-Umumnya bahasa pemrograman memiliki visibility modifier untuk menentukan siapa saja yang bisa mengakses property atau method.
-Namun, Dart tidak memiliki keyword visibility modifier seperti private atau public.
-Bagaimana cara  mengatasinya?
+Setelah menambahkan underscore pada nama variabel, Anda akan mendapatkan eror di berkas main.dart ketika mengakses property weight.
+Apa pasal? Kini  weight bersifat private dan tidak bisa diakses dari luar berkasnya. Solusinya, Anda bisa menambahkan setter dan getter
+untuk mendapatkan nilai serta mengubahnya dari luar berkas. Jika menggunakan IntelliJ IDEA Anda bisa menggunakan shortcut Alt + Insert lalu pilih Getter and Setter.
 * */
 
 class Animal {
   // Property
-  String name = '';
-  int age = 0;
-  double weight = 0;
+  String _name = '';
+  int _age = 0;
+  double _weight = 0;
 
   // Constructor
-  Animal(this.name, this.age, this.weight);
+  Animal(this._name, this._age, this._weight);
+
+  // Setter
+  set name(String value) {
+    _name = value;
+  }
+
+  // Getter
+  double get weight => _weight;
 
   // Method
   void eat() {
-    print('$name is eating.');
-    weight = weight + 0.2;
+    print('$_name is eating.');
+    _weight = _weight + 0.2;
   }
 
   void sleep() {
-    print('$name is sleeping.');
+    print('$_name is sleeping.');
   }
 
   void poop() {
-    print('$name is pooping.');
-    weight = weight - 0.1;
+    print('$_name is pooping.');
+    _weight = _weight - 0.1;
   }
 }
