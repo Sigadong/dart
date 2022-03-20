@@ -1,4 +1,4 @@
-import 'Animal.dart';
+import 'Cat.dart';
 
 /* Inheritance
 Inheritance adalah kemampuan suatu program untuk membuat kelas baru dari kelas yang ada.
@@ -8,5 +8,8 @@ sementara kelas yang mewarisi kelas induknya disebut sebagai kelas anak (child c
 */
 
 void main() {
-
+  var dicodingCat = Cat('Grayson', 2, 2.2, 'Gray');
+  dicodingCat.walk();
+  dicodingCat.eat();
+  print(dicodingCat.weight);
 }
