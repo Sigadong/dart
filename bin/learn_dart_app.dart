@@ -1,15 +1,5 @@
-import 'Cat.dart';
-
-/* Inheritance
-Inheritance adalah kemampuan suatu program untuk membuat kelas baru dari kelas yang ada.
-Konsep inheritance ini bisa dibayangkan layaknya seorang anak mewarisi sifat dari orang tuanya.
-Di dalam OOP kelas yang menurunkan sifat disebut sebagai kelas induk (parent class/superclass)
-sementara kelas yang mewarisi kelas induknya disebut sebagai kelas anak (child class/subclass).
-*/
+import 'Animal.dart';
 
 void main() {
-  var dicodingCat = Cat('Grayson', 2, 2.2, 'Gray');
-  dicodingCat.walk();
-  dicodingCat.eat();
-  print(dicodingCat.weight);
+  var dicodingCat = Animal('Gray', 2, 4.2); // Error: The class 'Animal' is abstract and can't be instantiated.
 }

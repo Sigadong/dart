@@ -1,4 +1,15 @@
-class Animal {
+/* Abstract Class
+Sesuai namanya, abstract merupakan gambaran umum dari sebuah kelas.
+Ia tidak dapat direalisasikan dalam sebuah objek.
+Secara harfiah hewan merupakan sebuah sifat. Kita tidak tahu bagaimana objek hewan tersebut.
+Kita bisa melihat bentuk kucing, ikan, dan burung namun tidak untuk hewan.
+Maka dari itu konsep abstract class perlu diterapkan agar kelas Animal tidak dapat direalisasikan
+dalam bentuk objek namun tetap dapat menurunkan sifatnya kepada kelas turunannya.
+
+Untuk menjadikan sebuah kelas menjadi abstract, kita hanya perlu menambah keyword abstract sebelum penulisan kelas:
+*/
+
+abstract class Animal {
   String _name = '';
   int _age;
   double _weight = 0;
