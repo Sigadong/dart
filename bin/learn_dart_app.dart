@@ -21,4 +21,7 @@ void main() {
     var dicodingCat = Animal('', 2, 4.2);
     dicodingCat.name = 'Gray';
     dicodingCat.eat();
+
+   Cascade operator ini sering kali menghemat langkah dalam membuat variabel sementara,
+   sehingga kode yang kita tulis menjadi lebih ringkas.
 */
