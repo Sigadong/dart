@@ -1,42 +1,45 @@
-/* Properties & Methods
-Property yang private artinya hanya bisa diakses pada berkas atau library yang sama.
-Kita akan membutuhkan private property ini di saat kita tidak ingin objek diubah dari luar.
-Karena Dart tidak memiliki modifier private, sebagai gantinya kita perlu menambahkan underscore (_) sebelum nama property.
+/* Constructor
+  Constructor adalah fungsi spesial dari sebuah kelas yang digunakan untuk membuat objek.
 
-Setelah menambahkan underscore pada nama variabel, Anda akan mendapatkan eror di berkas main.dart ketika mengakses property weight.
-Apa pasal? Kini  weight bersifat private dan tidak bisa diakses dari luar berkasnya. Solusinya, Anda bisa menambahkan setter dan getter
-untuk mendapatkan nilai serta mengubahnya dari luar berkas. Jika menggunakan IntelliJ IDEA Anda bisa menggunakan shortcut Alt + Insert lalu pilih Getter and Setter.
+  Beberapa perbedaan antara constructor dan fungsi biasa adalah:
+  1. Constructor memiliki nama yang sama dengan nama kelas.
+  2. Constructor tidak memiliki nilai kembalian (return type).
+  3. Constructor akan secara otomatis dipanggil ketika sebuah objek dibuat.
+  4. Jika kita tidak mendefinisikan constructor, default constructor tanpa argumen akan dibuat.
 * */
 
 class Animal {
   // Property
-  String _name = '';
-  int _age = 0;
-  double _weight = 0;
+  String name = '';
+  int age = 0;
+  double weight = 0;
 
   // Constructor
-  Animal(this._name, this._age, this._weight);
-
-  // Setter
-  set name(String value) {
-    _name = value;
+  // Animal(this.name, this.age, this.weight);
+  Animal(String name, int age, double weight) {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+    // other instructions
   }
+  /*
+    Keyword this di atas menunjuk pada objek yang ada di kelas tersebut.
+    Keyword this ini umumnya digunakan untuk menghindari ambiguitas antara
+    atribut dari class dan parameter yang memiliki nama yang sama.
+  */
 
-  // Getter
-  double get weight => _weight;
-
-  // Method
+    // Method
   void eat() {
-    print('$_name is eating.');
-    _weight = _weight + 0.2;
+    print('$name is eating.');
+    weight = weight + 0.2;
   }
 
   void sleep() {
-    print('$_name is sleeping.');
+    print('$name is sleeping.');
   }
 
   void poop() {
-    print('$_name is pooping.');
-    _weight = _weight - 0.1;
+    print('$name is pooping.');
+    weight = weight - 0.1;
   }
 }
