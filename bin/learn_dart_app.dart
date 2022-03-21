@@ -8,13 +8,13 @@ Functional programming (FP) ditulis dengan gaya deklaratif yang berfokus pada â€
 
 Berikut ini beberapa konsep dan karakteristik functional programming:
 
-Immutable variables
-Variabel pada functional programming bersifat immutable, artinya kita tidak bisa mengubah sebuah variabel ketika sudah diinisialisasi.
-Alih-alih mengubah nilai variabel, kita bisa membuat variabel baru untuk menyimpan data.
-Mekanisme ini bertujuan agar kode kita menjadi lebih aman karena state dari aplikasi tidak akan berubah sepanjang aplikasi berjalan.
+Functions are first-class citizen and can be higher-order.
+Maksud dari function merupakan first-class citizen adalah bahwa function berlaku sama seperti komponen pemrograman yang lain.
+Sebuah fungsi bisa dimasukkan ke variabel menjadi parameter dalam suatu fungsi dan juga menjadi nilai kembalian pada fungsi.
+Higher order functions adalah fungsi yang mengambil fungsi lain sebagai argumen dan juga dapat mengembalikan fungsi.
+
 */
 
 void main() {
-  var x = 5;
-  x = x + 1; // Contoh variable yang tidak immutable
+
 }
