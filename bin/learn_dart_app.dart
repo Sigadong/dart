@@ -1,20 +1,36 @@
-/*Extension Methods
-Paradigma Functional Programming
-Dart adalah bahasa yang mendukung multiparadigm. Artinya selain merupakan bahasa pemrograman berorientasi objek,
-penulisan syntax Dart juga menggunakan gaya functional programming.
+/* Anonymous Functions
+Untuk mendeklarasikan sebuah fungsi kita perlu mendefinisikan nilai kembalian dan juga nama fungsinya.
 
-Functional programming adalah paradigma pemrograman di mana proses komputasi didasarkan pada fungsi matematika murni.
-Functional programming (FP) ditulis dengan gaya deklaratif yang berfokus pada “what to solve” dibandingkan “how to solve” pada gaya imperatif.
+int sum(int num1, int num2) {
+  return num1 + num2;
+}
 
-Berikut ini beberapa konsep dan karakteristik functional programming:
+Kebanyakan fungsi pada Dart memiliki nama seperti sum(), main(), atau print(). Pada Dart kita bisa membuat fungsi
+yang tidak bernama alias nameless atau anonymous. Anonymous function ini juga dikenal dengan nama lambda.
 
-Functions are first-class citizen and can be higher-order.
-Maksud dari function merupakan first-class citizen adalah bahwa function berlaku sama seperti komponen pemrograman yang lain.
-Sebuah fungsi bisa dimasukkan ke variabel menjadi parameter dalam suatu fungsi dan juga menjadi nilai kembalian pada fungsi.
-Higher order functions adalah fungsi yang mengambil fungsi lain sebagai argumen dan juga dapat mengembalikan fungsi.
-
+Untuk membuat lambda atau anonymous function kita cukup menuliskan tanda kurung untuk menerima parameter dan body function-nya.
+void main() {
+  (int num1, int num2) {
+    return num1 + num2;
+  };
+}
+Lalu bagaimana kita bisa menggunakan fungsi tersebut? Seperti yang telah dijelaskan sebelumnya bahwa function adalah first-class citizen,
+maka fungsi juga merupakan sebuah objek yang bisa disimpan ke dalam variabel. Kita bisa menggunakan keyword var atau secara eksplisit menggunakan tipe data Function.
 */
 
 void main() {
+  var sum = (int num1, int num2) {
+    return num1 + num2;
+  };
 
+  Function printLambda = () {
+    print('This is lambda function');
+  };
+
+  printLambda();
+  print(sum(3, 4));
+
+  // Selain itu lambda juga mendukung function expression untuk membuat kode fungsi menjadi lebih ringkas dengan memanfaatkan fat arrow (=>).
+  var sum = (int num1, int num2) => num1 + num2;
+  Function printLambda = () => print('This is lambda function');
 }
