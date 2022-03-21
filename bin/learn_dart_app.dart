@@ -8,23 +8,13 @@ Functional programming (FP) ditulis dengan gaya deklaratif yang berfokus pada â€
 
 Berikut ini beberapa konsep dan karakteristik functional programming:
 
-Recursion
-Pada functional programming tidak ada konsep perulangan seperti for atau while.
-Iterasi pada functional programming dilakukan melalui rekursi atau pemanggilan fungsi dari fungsi itu sendiri,
-hingga mencapai kasus dasar.
+Immutable variables
+Variabel pada functional programming bersifat immutable, artinya kita tidak bisa mengubah sebuah variabel ketika sudah diinisialisasi.
+Alih-alih mengubah nilai variabel, kita bisa membuat variabel baru untuk menyimpan data.
+Mekanisme ini bertujuan agar kode kita menjadi lebih aman karena state dari aplikasi tidak akan berubah sepanjang aplikasi berjalan.
 */
 
-int fibonacci(n) {
-  if (n <= 0) {
-    return 0;
-  } else if(n == 1) {
-    return 1;
-  } else {
-    return fibonacci(n - 1) + fibonacci(n - 2);
-  }
-}
-
-
 void main() {
-  fibonacci(7);
+  var x = 5;
+  x = x + 1; // Contoh variable yang tidak immutable
 }
