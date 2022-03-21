@@ -1,34 +1,27 @@
-/* Higher-Order Functions
-Jika disimulasikan fungsi myHigherOrderFunction akan memanggil fungsi sum yang dijadikan parameter.
+/* Closures
+Suatu fungsi dapat dibuat dalam lingkup global atau di dalam fungsi lain.
+Suatu fungsi yang dapat mengakses variabel di dalam lexical scope-nya disebut dengan closure.
+Lexical scope berarti bahwa pada sebuah fungsi bersarang (nested functions), fungsi yang berada di dalam memiliki akses ke variabel di lingkup induknya.
 
-  void myHigherOrderFunction(String message, Function myFunction) {
-    print(message);
-    print(myFunction(3, 4));  // sum(3, 4)    // return 3 + 4
-  }
-
-Namun deklarasi higher order function ini bisa menjadi sedikit tricky. Misalnya kode di bawah ini tidak akan
-terdeteksi eror namun ketika dijalankan, aplikasi Anda akan mengalami crash. Tahukah kenapa?
-
-  void myHigherOrderFunction(String message, Function myFunction) {
-    print(message);
-    print(myFunction(4));
-  }
-
-Karena kita tidak menentukan spesifikasi dari fungsi seperti jumlah parameter atau nilai kembaliannya, maka semua
-jenis fungsi akan bisa dijalankan termasuk pemanggilan myFunction seperti di atas. Untuk mengatasinya kita bisa lebih
-spesifik menentukan seperti apa fungsi yang valid untuk menjadi parameter.
-
-  void myHigherOrderFunction(String message, int Function(int num1, int num2) myFunction) { }
-
-Pada fungsi di atas kita perlu memasukkan fungsi dengan dua parameter dan nilai kembali berupa int sebagai parameter.
+Berikut ini adalah contoh kode implementasi closure:
 */
 
 void main() {
-  // Satu fungsi yang merupakan higher order function yaitu fungsi forEach().
-  var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13];
-
-  fibonacci.forEach((item) {
-    print(item);
-  });
-
+  var closureExample = calculate(2);
+  closureExample();
+  closureExample();
 }
+
+Function calculate(base) {
+  var count = 1;
+
+  return () => print("Value is ${base + count++}");
+}
+
+/*
+  Di dalam fungsi calculate() terdapat variabel count dan mengembalikan nilai berupa fungsi.
+  Fungsi lambda di dalamnya memiliki akses ke variabel count karena berada pada lingkup yang sama.
+  Karena variabel count berada pada scope calculate, maka umumnya variabel tersebut akan hilang atau dihapus ketika fungsinya selesai dijalankan.
+  Namun pada kasus di atas fungsi lambda atau closureExample masih memiliki referensi atau akses ke variabel count sehingga bisa diubah.
+  Variabel pada mekanisme di atas telah tertutup (close covered), yang berarti variabel tersebut berada di dalam closure.
+*/
