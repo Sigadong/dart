@@ -11,3 +11,45 @@ Contoh sederhananya, kita memiliki variabel list integer.
 
 Kita memiliki kebutuhan untuk mengurutkan nilai di dalam list tersebut namun List pada Dart tidak memiliki fungsi untuk mengurutkannya (Dart memiliki fungsi sort() namun bersifat mentransformasi list dan tidak mengembalikan nilai).
 */
+
+/* extension <extension name> on <type> {
+  (<member definition>)*
+} */
+
+extension Sorting on List<int> {
+  List<int> sortAsc() {
+    var list = this;
+    var length = this.length;
+
+
+    for (int i = 0; i < length - 1; i++) {
+      int min = i;
+      for (int j = i + 1; j < length; j++) {
+        if (list[j] < list[min]) {
+          min = j;
+        }
+      }
+
+
+      int tmp = list[min];
+      list[min] = list[i];
+      list[i] = tmp;
+    }
+
+
+    return list;
+  }
+}
+
+/*
+  Pada extension method di atas kita telah membuat method atau fungsi untuk
+  mengurutkan data di dalam list menggunakan selection sort algorithm. Selanjutnya kita
+  bisa memanggil method ini dari objek list.
+*/
+
+void main() {
+  var unsortedNumbers = [2, 5, 3, 1, 4];
+  print(unsortedNumbers);
+  var sortedNumbers = unsortedNumbers.sortAsc();
+  print(sortedNumbers);
+}
