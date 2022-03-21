@@ -13,8 +13,8 @@ Kita memiliki kebutuhan untuk mengurutkan nilai di dalam list tersebut namun Lis
   // disini kode extentions.dart
 
   Pada extension method di atas kita telah membuat method atau fungsi untuk
-  mengurutkan data di dalam list menggunakan selection sort algorithm. Selanjutnya kita
-  bisa memanggil method ini dari objek list.
+  mengurutkan data di dalam list menggunakan selection sort algorithm(https://www.tutorialspoint.com/data_structures_algorithms/selection_sort_algorithm.htm).
+  Selanjutnya kita bisa memanggil method ini dari objek list.
 
   Kita juga bisa menggunakan kembali extension method ini di beberapa berkas yang berbeda sebagai library.
  */
