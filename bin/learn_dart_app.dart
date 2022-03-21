@@ -1,5 +1,9 @@
-import 'Bird.dart';
+/*
+  Enumerated Types
+Bagaimana kita bisa menyimpan banyak nilai konstan di satu tempat dan menanganinya secara bersamaan??
+Solusinya, Dart menyediakan Enums. Enum mewakili kumpulan konstan yang membuat kode kita lebih jelas dan mudah dibaca.
+*/
 
 void main(){
-  var dicodingCat = Bird('Gray', 2, 4.2, 'yellow'); // Error: The class 'Animal' is abstract and can't be instantiated.
+
 }
