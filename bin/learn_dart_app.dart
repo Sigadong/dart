@@ -1,36 +1,24 @@
-/* Anonymous Functions
-Untuk mendeklarasikan sebuah fungsi kita perlu mendefinisikan nilai kembalian dan juga nama fungsinya.
+/* Higher-Order Functions
+Apa yang bisa dilakukan dengan lambda atau anonymous function??
 
-int sum(int num1, int num2) {
-  return num1 + num2;
-}
+Kita bisa memanfaatkan lambda untuk membuat higher-order function.
+Higher order function adalah fungsi yang menggunakan fungsi lainnya sebagai parameter, menjadi tipe kembalian, atau keduanya.
 
-Kebanyakan fungsi pada Dart memiliki nama seperti sum(), main(), atau print(). Pada Dart kita bisa membuat fungsi
-yang tidak bernama alias nameless atau anonymous. Anonymous function ini juga dikenal dengan nama lambda.
-
-Untuk membuat lambda atau anonymous function kita cukup menuliskan tanda kurung untuk menerima parameter dan body function-nya.
-void main() {
-  (int num1, int num2) {
-    return num1 + num2;
-  };
-}
-Lalu bagaimana kita bisa menggunakan fungsi tersebut? Seperti yang telah dijelaskan sebelumnya bahwa function adalah first-class citizen,
-maka fungsi juga merupakan sebuah objek yang bisa disimpan ke dalam variabel. Kita bisa menggunakan keyword var atau secara eksplisit menggunakan tipe data Function.
+Seperti fungsi berikut:
+  void myHigherOrderFunction(String message, Function myFunction) {
+    print(message);
+    print(myFunction(3, 4));
+  }
+Fungsi di atas merupakan higher order function karena menerima parameter berupa fungsi lain. Untuk memanggil fungsi di atas,
+kita bisa langsung memasukkan lambda sebagai parameter maupun variabel yang berisi nilai berupa fungsi.
 */
 
 void main() {
-  var sum = (int num1, int num2) {
-    return num1 + num2;
-  };
+  // Opsi 1
+  Function sum = (int num1, int num2) => num1 + num2;
+  myHigherOrderFunction('Hello', sum);
 
-  Function printLambda = () {
-    print('This is lambda function');
-  };
 
-  printLambda();
-  print(sum(3, 4));
-
-  // Selain itu lambda juga mendukung function expression untuk membuat kode fungsi menjadi lebih ringkas dengan memanfaatkan fat arrow (=>).
-  var sum = (int num1, int num2) => num1 + num2;
-  Function printLambda = () => print('This is lambda function');
+  // Opsi 2
+  myHigherOrderFunction('Hello', (num1, num2) => num1 + num2);
 }
