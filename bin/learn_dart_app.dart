@@ -46,8 +46,8 @@
   Jika diperhatikan mixin ini memang mirip dengan multiple inheritance.
   Namun kelas mixin ini tidak termasuk ke dalam hirarki parent-child atau inheritance.
   Oleh sebab itu mixin memungkinkan kita terhindar dari masalah yang sering terjadi pada
-  multiple inheritance yang dikenal dengan diamond problem, yaitu ada dua parent class yang
-  memiliki method dengan nama yang sama sehingga child class-nya ambigu dalam menjalankan method yang mana.
+  multiple inheritance yang dikenal dengan diamond problem(https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem),
+  yaitu ada dua parent class yang memiliki method dengan nama yang sama sehingga child class-nya ambigu dalam menjalankan method yang mana.
 
   Sebagai contoh kita punya kelas bernama Performer.
       abstract class Performer {
