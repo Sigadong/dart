@@ -1,40 +1,30 @@
-/* Generic
+/* Type Inference
+Dart mendukung type inference. Dart memiliki analyzer yang dapat menentukan menyimpulkan tipe untuk field, method,
+variabel lokal, dan beberapa tipe argumen generic. Ketika analyzer tidak memiliki informasi yang cukup untuk menyimpulkan
+tipe tertentu, maka tipe dynamic akan digunakan.
 
-Pada dokumentasi collection seperti List, sebenarnya tipe dari List tersebut adalah List<E>.
-Tanda <...> ini menunjukkan bahwa List adalah tipe generic, tipe yang memiliki tipe parameter.
-Menurut coding convention dari Dart, tipe parameter dilambangkan dengan satu huruf kapital seperti E, T, K, atau V.
+Misalnya berikut ini adalah contoh penulisan variabel map dengan tipe yang eksplisit:
+  Map<String, dynamic> company = {'name': 'Dicoding', 'yearsFounded': 2015};
 
-Secara umum generic merupakan konsep yang digunakan untuk menentukan tipe data yang akan kita gunakan.
-Kita bisa mengganti tipe parameter generic pada Dart dengan tipe yang lebih spesifik dengan menentukan instance dari tipe tersebut.
+Atau, Anda dapat menggunakan var dan Dart akan menentukan tipenya.
+  var company = {'name': 'Dicoding', 'yearsFounded': 2015}; // Map<String, Object>
 
-Tipe parameter yang digunakan pada variabel list di atas adalah int, maka nilai yang bisa kita masukkan adalah nilai dengan
-tipe int. Begitu juga jika kita menentukan tipe parameter String, maka tipe yang bisa kita masukkan ke dalam list hanya berupa String.
-  List<int> numberList = [1, 2, 3, 4, 5];
-  List<String> stringList = ['Dart', 'Flutter', 'Android', 'iOS'];
-  List dynamicList = [1, 2, 3, 'empat'];  // List<dynamic>
+Type inference menentukan tipe dari entri kemudian menentukan tipe dari variabelnya.
+Pada contoh di atas, kedua key dari map adalah String, namun nilainya memiliki tipe yang berbeda, yaitu String
+dan int, di mana keduanya merupakan turunan dari Object. Sehingga variabel company akan memiliki tipe Map<String, Object>.
 
-Dart membantu kita menghasilkan kode yang type safe dengan membatasi tipe yang bisa digunakan ke dalam suatu objek dan menghindari bug.
-Selain itu generic juga bermanfaat mengurangi duplikasi kode.
-Misalnya ketika Anda perlu untuk menyimpan objek cache bertipe String dan int. Alih-alih membuat dua objek StringCache dan IntCache,
-Anda bisa membuat satu objek saja dengan memanfaatkan tipe parameter dari generic.
-  abstract class Cache<T> {
-    T getByKey(String key);
-    void setByKey(String key, T value);
-  }
+Saat menetapkan nilai objek ke dalam objek lain, kita bisa mengganti tipenya dengan tipe yang berbeda tergantung
+pada apakah objek tersebut adalah consumer atau producer. Perhatikan assignment berikut:
+  Fish fish = Fish();
 
-Jika kita memiliki objek List<Bird> maka objek apa saja yang bisa kita masukkan ke list tersebut??
-  List<Bird> birdList = [Bird(), Dove(), Duck()];
+Fish fish adalah consumer dan Fish() adalah producer. Pada posisi consumer, aman untuk mengganti consumer bertipe
+yang spesifik dengan tipe yang lebih umum. Jadi, aman untuk mengganti Fish fish dengan Animal fish karena Animal adalah supertype dari Fish.
+  Animal fish = Fish();
 
-Seluruh objek Bird atau objek turunannya bisa masuk ke dalam birdList.
-Namun, ketika menambahkan objek dari Animal, terjadi compile error karena objek Animal belum
-tentu merupakan objek Bird.
-  List<Bird> birdList = [Bird(), Dove(), Duck(), Animal()];  // Error
+Namun mengganti Fish fish dengan Shark fish melanggar type safety karena bisa saja Fish memiliki subtype lain dengan
+perilaku berbeda, misalnya FlyingFish.
+  Shark fish = Fish();  // Error
 
-Berbeda jika kita mengisi List<Bird> dengan List<Animal> seperti berikut:
-  List<Bird> myBird = List<Animal>();
-
-Kompiler tidak akan menunjukkan eror namun ketika kode dijalankan akan terjadi runtime error
-karena List<Animal> bukanlah subtype dari List<BIrd>.
-  Unhandled exception:
-  type 'List<Animal>' is not a subtype of type 'List<Bird>'
+Pada posisi producer, aman untuk mengganti tipe yang umum (supertype) dengan tipe yang lebih spesifik (subtype).
+  Fish fish = Shark();
 */
