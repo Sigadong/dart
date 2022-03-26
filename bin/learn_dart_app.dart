@@ -1,39 +1,86 @@
-/* Completed with error
-  Kita dapat menambahkan method .catchError() setelah then. Sehingga ketika
-  terjadi eror atau exception di dalam Future, blok kode ini akan dijalankan.
+/* Future dengan async-await
+  Seperti yang kita tahu, penulisan kode asynchronous akan sedikit berbeda dengan proses synchronous.
+Contohnya program pesan kopi kita sebelumnya jika dituliskan secara asynchronous akan seperti berikut:
+
+  // Uncompleted
+   getOrder().then((value) {
+    print('You order: $value'); // Completed with data
+  })
+  .catchError((error) {
+    print('Sorry. $error'); // Completed with error
+  })
+  .whenComplete(() {
+    print('Thank you'); // When Complete
+  });
+
+
+Dart memiliki keyword async dan await yang merupakan sebuah alternatif supaya
+kita bisa menuliskan proses asynchronous layaknya proses synchronous. Bagaimana caranya?
+
+Dengan gaya penulisan synchronous, kira-kira kode program pesan kopi kita akan seperti berikut:
 */
 
+
 void main() {
-  getOrder().then((value) {
-    print('You order: $value');
-  })
-      .catchError((error) {
-    print('Sorry. $error');
-  })
-      .whenComplete(() {
-    print('Thank you');
-  });
   print('Getting your order...');
+  var order = getOrder();
+  print('You order: $order');
 }
+/*Namun ketika kode di atas dijalankan hasilnya tidak akan sesuai yang kita harapkan karena
+fungsi getOrder() merupakan objek Future.*/
 
-Future<String> getOrder() {
-  return Future.delayed(Duration(seconds: 3), () {
-    var isStockAvailable = false;
-    if (isStockAvailable) {
-      return 'Coffee Boba';
-    } else {
-      throw 'Our stock is not enough.';
-    }
-  });
-}
+  Getting your order...
+  You order: Instance of 'Future<String>'
+
 /*
-Seperti pada fungsi main() ada tiga blok kode yang mewakili state Future:
-  1.Fungsi getOrder() yang berisi Future yang masih uncompleted.
-  2.Method then() yang menangani kondisi completed with data.
-  3.Method catchError() yang menangani kondisi completed with error.
+Output ini disebabkan karena fungsi main() masih merupakan fungsi synchronous.
+Untuk mengubahnya menjadi fungsi asynchronous tambahkan keyword async sebelum function body.
+*/
 
- When Completed.
-  Ada satu method lagi yang bisa kita gunakan yaitu whenComplete().
-  Method ini akan dijalankan ketika suatu fungsi Future selesai dijalankan, tak peduli apakah menghasilkan nilai atau eror.
-  Ini seperti blok finally pada try-catch-finally.
- */
+  void main() async { … }
+
+/*Kemudian tambahkan keyword await sebelum fungsi yang mengembalikan nilai Future.*/
+
+  var order = await getOrder();
+
+/*Dari perubahan di atas yang memanfaatkan async-await kita telah berhasil menuliskan
+proses asynchronous dengan gaya synchronous.*/
+
+void main() async {
+  print('Getting your order...');
+  var order = await getOrder();
+  print('You order: $order');
+}
+
+
+/*
+  Output :
+  Getting your order...
+  You order: Coffee Boba
+*/
+
+/*Lalu bagaimana menangani ketika terjadi eror? Caranya cukup sederhana yaitu dengan memanfaatkan try-catch:*/
+
+  void main() async {
+    print('Getting your order...');
+    try {
+      var order = await getOrder();
+      print('You order: $order');
+    } catch (error) {
+      print('Sorry. $error');
+    } finally {
+      print('Thank you');
+    }
+  }
+
+/*Begitu juga seperti yang telah disebutkan, method whenComplete() bisa digantikan dengan blok finally.
+Sehingga keseluruhan kode akan menjadi seperti berikut:*/
+
+  try {
+    var order = await getOrder(); // Uncompleted
+  print('You order: $order'); // Completed with data
+  } catch (error) {
+    print('Sorry. $error'); // Completed with Error
+  } finally {
+    print('Thank you'); // When Complete
+  }
